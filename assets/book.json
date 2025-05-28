@@ -1,0 +1,20 @@
+{
+  "pages": [
+    {
+      "text": "Welcome to your digital book. This is the first page with just text. Enjoy reading!",
+      "image": null
+    },
+    {
+      "text": "This is page two. Here’s an image to enrich the content.",
+      "image": "sample_image_1.jpg"
+    },
+    {
+      "text": "Page three contains more insightful content. Continue flipping!",
+      "image": null
+    },
+    {
+      "text": "Page four brings another image into view.",
+      "image": "sample_image_2.jpg"
+    }
+  ]
+}
