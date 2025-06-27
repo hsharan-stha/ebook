@@ -74,40 +74,44 @@ class _MyWebViewState extends State<MyWebView> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('http://192.168.10.12/kanji-prac/reader.html'));
+      ..loadRequest(Uri.parse('http://192.168.10.12:8000/'));
   }
 
   @override
   Widget build(BuildContext context) {
     if (_isOffline) {
       return Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.wifi_off, size: 60, color: Colors.grey),
-              const SizedBox(height: 20),
-              const Text("No Internet Connection", style: TextStyle(fontSize: 18)),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () => _checkConnectivity(),
-                child: const Text("Retry"),
-              )
-            ],
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.wifi_off, size: 60, color: Colors.grey),
+                const SizedBox(height: 20),
+                const Text("No Internet Connection", style: TextStyle(fontSize: 18)),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () => _checkConnectivity(),
+                  child: const Text("Retry"),
+                )
+              ],
+            ),
           ),
         ),
       );
     }
 
     return Scaffold(
-      body: Stack(
-        children: [
-          WebViewWidget(controller: _controller),
-          if (_isLoading)
-            const Center(
-              child: CircularProgressIndicator(),
-            ),
-        ],
+      body: SafeArea(
+        child: Stack(
+          children: [
+            WebViewWidget(controller: _controller),
+            if (_isLoading)
+              const Center(
+                child: CircularProgressIndicator(),
+              ),
+          ],
+        ),
       ),
     );
   }
